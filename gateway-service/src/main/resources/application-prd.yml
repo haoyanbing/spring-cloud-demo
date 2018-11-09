@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/
+
+spring:
+  application:
+    name: gateway-service
+
+zuul:
+  routes:
+    user-api:
+      path: /user/**
+      serviceId: user-service
+  SendErrorFilter:
+    error:
+      disable: true
+  host: 
+    connect-timeout-millis: 300000
+    socket-timeout-millis: 300000
+
+ribbon:
+  ReadTimeout: 12000 #获取或设置读取操作未完成时发生超时之前的毫秒数。
+  ConnectTimeout: 12000 #客户端等待与服务器建立连接的时间（以毫秒计）
+  MaxAutoRetries: 0 #在同一台服务器上重试的最大次数
+  MaxAutoRetriesNextServer: 1 #要重试的下一个服务器的最大数量
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 12100 #断路器的超时时间,断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试。

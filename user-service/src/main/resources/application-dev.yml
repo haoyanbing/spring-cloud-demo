@@ -1,0 +1,32 @@
+server:
+  port: 8082
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/
+
+spring:
+  application:
+    name: user-service
+
+  datasource:
+    url:  jdbc:mysql://118.31.19.192:20080/finwood_tp_dev?zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    username: finwood_tp
+    password: finwood_tp
+
+  redis:
+    host: 118.31.19.192
+    port: 20081
+    password: finwood@redis1056
+    database: 5
+    jedis:
+      pool:
+        max-active: 1024
+        max-wait: 10000ms
+        max-idle: 10
+        min-idle: 0
+
+
+logging:
+  config: classpath:log4j2/log4j2-dev.xml

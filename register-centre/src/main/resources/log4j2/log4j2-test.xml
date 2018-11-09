@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <!--添加一个控制台追加器-->
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout>
+                <pattern>%-d{yyyy-MM-dd HH:mm:ss} [%p]-[%c] - %m%n</pattern>
+            </PatternLayout>
+        </Console>
+
+        <!-- info log -->
+        <RollingFile name="InfoLog"
+                     filePattern="C:/finwood-tp-www/log4j/finwood.tp/info/day-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="[INFO LOG] %-d{yyyy-MM-dd HH:mm:ss} [%t:%r] - [%p] %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+            <Filters>
+                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY" />
+            </Filters>
+        </RollingFile>
+
+        <!-- error log -->
+        <RollingFile name="ErrorLog"
+                     filePattern="C:/finwood-tp-www/log4j/finwood.tp/error/day.log">
+            <PatternLayout pattern="[ERROR LOG] %-d{yyyy-MM-dd HH:mm:ss} [%t:%r] - [%p] %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY" />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="InfoLog" />
+            <AppenderRef ref="ErrorLog" />
+        </Root>
+    </Loggers>
+</Configuration>

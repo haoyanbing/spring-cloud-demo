@@ -1,0 +1,8 @@
+/.idea
+/common/target
+/gateway-service/target
+/model/target
+/user-service/target
+/register-service/target
+*.iml
+.mvn
