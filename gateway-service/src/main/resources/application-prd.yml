@@ -22,6 +22,11 @@ zuul:
     connect-timeout-millis: 300000
     socket-timeout-millis: 300000
 
+# 开启hystrix
+feign:
+  hystrix:
+    enabled: true
+
 ribbon:
   ReadTimeout: 12000 #获取或设置读取操作未完成时发生超时之前的毫秒数。
   ConnectTimeout: 12000 #客户端等待与服务器建立连接的时间（以毫秒计）

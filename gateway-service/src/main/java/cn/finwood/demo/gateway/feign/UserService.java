@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * created by haoyanbing on 2018/11/9 13:55
  */
-@FeignClient("user-service")
+@FeignClient(value = "user-service", fallback = UserServiceFallBack.class)
 public interface UserService {
 
     @GetMapping("verifyAuth")
