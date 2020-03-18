@@ -79,8 +79,8 @@
                         <version>5.1.34</version>
                     </dependency>
                     <dependency>
-                        <groupId>cn.finwood.tp</groupId>
-                        <artifactId>finwood-tp-model</artifactId>
+                        <groupId>cn.finwood.demo</groupId>
+                        <artifactId>model</artifactId>
                         <version>${finwood.demo.version}</version>
                     </dependency>
                 </dependencies>
